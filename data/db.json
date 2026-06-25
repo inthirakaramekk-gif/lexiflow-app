@@ -10,36 +10,144 @@
       "sentences": [
         {
           "structure": "S + V",
-          "sentence": "He smiled a bit.",
-          "translation": "เขายิ้มเล็กน้อย",
-          "grammar": "S (He: เขา) + V (smiled: ยิ้ม) + adv (a bit: เล็กน้อย)"
+          "sentence": "He tired a bit.",
+          "translation": "เขาเหนื่อยเล็กน้อย",
+          "grammar": "S (He: เขา) + V (tired: เหนื่อย) + Adv (a bit: เล็กน้อย)"
         },
         {
           "structure": "S + V + O",
-          "sentence": "I ate a bit of cake.",
-          "translation": "ฉันกินเค้กไปนิดหน่อย",
-          "grammar": "S (I: ฉัน) + V (ate: กิน) + O (a bit of cake: เค้กจำนวนหนึ่ง/เล็กน้อย)"
+          "sentence": "She ate a bit.",
+          "translation": "เธอกินไปนิดหน่อย",
+          "grammar": "S (She: เธอ) + V (ate: กิน) + O (a bit: เล็กน้อย)"
         },
         {
           "structure": "S + V + C",
-          "sentence": "The coffee is a bit hot.",
-          "translation": "กาแฟร้อนนิดหน่อย",
-          "grammar": "S (The coffee: กาแฟ) + V (is: เป็น/คือ) + C (a bit hot: ร้อนเล็กน้อย)"
+          "sentence": "The cake tastes a bit sweet.",
+          "translation": "เค้กรสชาติหวานไปนิดหน่อย",
+          "grammar": "S (The cake: เค้ก) + V (tastes: มีรสชาติ) + C (a bit: เล็กน้อย) + Adj (sweet: หวาน)"
         },
         {
           "structure": "S + V + IO + DO",
-          "sentence": "She gave me a bit of advice.",
-          "translation": "เธอให้คำแนะนำฉันเล็กน้อย",
-          "grammar": "S (She: เธอ) + V (gave: ให้) + IO (me: ฉัน) + DO (a bit of advice: คำแนะนำเล็กน้อย)"
+          "sentence": "I gave him a bit.",
+          "translation": "ฉันให้เขาไปนิดหน่อย",
+          "grammar": "S (I: ฉัน) + V (gave: ให้) + IO (him: เขา) + DO (a bit: เล็กน้อย)"
         },
         {
           "structure": "S + V + O + C",
-          "sentence": "He considers the work a bit easy.",
-          "translation": "เขาพิจารณาว่างานนี้ง่ายนิดหน่อย",
-          "grammar": "S (He: เขา) + V (considers: พิจารณาเห็นว่า) + O (the work: งานนี้) + C (a bit easy: ง่ายเล็กน้อย)"
+          "sentence": "I found the movie a bit boring.",
+          "translation": "ฉันพบว่าหนังเรื่องนี้ดูน่าเบื่อไปนิดหน่อย",
+          "grammar": "S (I: ฉัน) + V (found: พบว่า) + O (the movie: หนังเรื่องนี้) + C (a bit: เล็กน้อย) + Adj (boring: น่าเบื่อ)"
         }
       ],
-      "trick": "จำว่า 'A' (หนึ่ง) 'Bit' (ชิ้น/ส่วนเล็กๆ) รวมกันก็คือมีอยู่แค่ชิ้นเล็กๆ นิดเดียวเท่านั้น"
+      "trick": "จำว่า 'a bit' ออกเสียงคล้าย 'อะ-บิด' เหมือนเราบิดขนมมาทานแค่ชิ้นเล็กๆ นิดเดียวพอดี"
+    },
+    "w-1": {
+      "wordTranslation": "สองสาม, สองสี่, คู่หนึ่ง",
+      "sentences": [
+        {
+          "structure": "S + V",
+          "sentence": "A couple arrived.",
+          "translation": "คู่รักคู่หนึ่งมาถึงแล้ว",
+          "grammar": "S (A couple: คู่รักคู่หนึ่ง) + V (arrived: มาถึง)"
+        },
+        {
+          "structure": "S + V + O",
+          "sentence": "I bought a couple of apples.",
+          "translation": "ฉันซื้อแอปเปิลมาสองสามลูก",
+          "grammar": "S (I: ฉัน) + V (bought: ซื้อ) + O (a couple of apples: แอปเปิลสองสามลูก)"
+        },
+        {
+          "structure": "S + V + C",
+          "sentence": "They are a couple.",
+          "translation": "พวกเขาเป็นคู่รักกัน",
+          "grammar": "S (They: พวกเขา) + V (are: เป็น) + C (a couple: คู่รัก)"
+        },
+        {
+          "structure": "S + V + IO + DO",
+          "sentence": "He gave a couple of friends some cake.",
+          "translation": "เขามอบเค้กให้เพื่อนสองสามคน",
+          "grammar": "S (He: เขา) + V (gave: มอบให้) + IO (a couple of friends: เพื่อนสองสามคน) + DO (some cake: เค้กจำนวนหนึ่ง)"
+        },
+        {
+          "structure": "S + V + O + C",
+          "sentence": "We consider them a couple.",
+          "translation": "เราพิจารณาว่าพวกเขาเป็นคู่รักกัน",
+          "grammar": "S (We: เรา) + V (consider: พิจารณาว่า) + O (them: พวกเขา) + C (a couple: คู่รัก)"
+        }
+      ],
+      "trick": "จำว่า Couple ออกเสียงคล้าย 'คู่' ในภาษาไทย ซึ่งแปลว่า คู่รัก หรือจำนวนเพียงเล็กน้อย (สองสามอย่าง)"
+    },
+    "w-2": {
+      "wordTranslation": "จำนวนหนึ่ง, สองสามอัน",
+      "sentences": [
+        {
+          "structure": "S + V",
+          "sentence": "A few students arrived.",
+          "translation": "นักเรียนจำนวนหนึ่งมาถึงแล้ว",
+          "grammar": "S (A few students: นักเรียนจำนวนหนึ่ง) + V (arrived: มาถึง)"
+        },
+        {
+          "structure": "S + V + O",
+          "sentence": "He bought a few apples.",
+          "translation": "เขาซื้อแอปเปิลมาจำนวนหนึ่ง",
+          "grammar": "S (He: เขา) + V (bought: ซื้อ) + O (a few apples: แอปเปิลจำนวนหนึ่ง)"
+        },
+        {
+          "structure": "S + V + C",
+          "sentence": "These are a few reasons.",
+          "translation": "สิ่งเหล่านี้คือเหตุผลจำนวนหนึ่ง",
+          "grammar": "S (These: สิ่งเหล่านี้) + V (are: คือ) + C (a few reasons: เหตุผลจำนวนหนึ่ง)"
+        },
+        {
+          "structure": "S + V + IO + DO",
+          "sentence": "She gave a few guests gifts.",
+          "translation": "เธอมอบของขวัญให้แขกจำนวนหนึ่ง",
+          "grammar": "S (She: เธอ) + V (gave: มอบ) + IO (a few guests: แขกจำนวนหนึ่ง) + DO (gifts: ของขวัญ)"
+        },
+        {
+          "structure": "S + V + O + C",
+          "sentence": "I consider a few ideas brilliant.",
+          "translation": "ฉันถือว่าไอเดียจำนวนหนึ่งนั้นยอดเยี่ยมมาก",
+          "grammar": "S (I: ฉัน) + V (consider: ถือว่า/พิจารณา) + O (a few ideas: ไอเดียจำนวนหนึ่ง) + C (brilliant: ยอดเยี่ยม)"
+        }
+      ],
+      "trick": "จำว่า 'A few' = 'ฟิวนิดหน่อย' (ฟิว = few) หมายถึงมีจำนวนน้อยๆ หรือสองสามอันพอเป็นพิธี"
+    },
+    "w-3": {
+      "wordTranslation": "เล็กน้อย, นิดหน่อย",
+      "sentences": [
+        {
+          "structure": "S + V",
+          "sentence": "He rested a little.",
+          "translation": "เขาพักผ่อนเล็กน้อย",
+          "grammar": "S (He: เขา) + V (rested: พักผ่อน) + Adv (a little: เล็กน้อย)"
+        },
+        {
+          "structure": "S + V + O",
+          "sentence": "I ate a little soup.",
+          "translation": "ฉันกินซุปไปนิดหน่อย",
+          "grammar": "S (I: ฉัน) + V (ate: กิน) + O (a little soup: ซุปเล็กน้อย)"
+        },
+        {
+          "structure": "S + V + C",
+          "sentence": "The dog seems a little hungry.",
+          "translation": "สุนัขตัวนั้นดูหิวเล็กน้อย",
+          "grammar": "S (The dog: สุนัข) + V (seems: ดูเหมือน) + C (a little hungry: หิวเล็กน้อย)"
+        },
+        {
+          "structure": "S + V + IO + DO",
+          "sentence": "She gave me a little water.",
+          "translation": "เธอให้น้ำฉันเล็กน้อย",
+          "grammar": "S (She: เธอ) + V (gave: ให้) + IO (me: ฉัน) + DO (a little water: น้ำเล็กน้อย)"
+        },
+        {
+          "structure": "S + V + O + C",
+          "sentence": "They kept the room a little warm.",
+          "translation": "พวกเขาทำให้ห้องอุ่นขึ้นเล็กน้อย",
+          "grammar": "S (They: พวกเขา) + V (kept: รักษาไว้/ทำให้) + O (the room: ห้อง) + C (a little warm: อุ่นเล็กน้อย)"
+        }
+      ],
+      "trick": "จำว่า 'A little' คือ 'เออ นิดนึงน่า' (Little = นิดหน่อย) คล้ายกับคำว่า 'Little bit' ที่แปลว่านิดนึงเหมือนกัน"
     }
   }
 }
