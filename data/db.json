@@ -1,0 +1,45 @@
+{
+  "progress": {
+    "masteredIds": [],
+    "starredIds": [],
+    "notes": {}
+  },
+  "cardCache": {
+    "w-0": {
+      "wordTranslation": "เล็กน้อย, นิดหน่อย",
+      "sentences": [
+        {
+          "structure": "S + V",
+          "sentence": "He smiled a bit.",
+          "translation": "เขายิ้มเล็กน้อย",
+          "grammar": "S (He: เขา) + V (smiled: ยิ้ม) + adv (a bit: เล็กน้อย)"
+        },
+        {
+          "structure": "S + V + O",
+          "sentence": "I ate a bit of cake.",
+          "translation": "ฉันกินเค้กไปนิดหน่อย",
+          "grammar": "S (I: ฉัน) + V (ate: กิน) + O (a bit of cake: เค้กจำนวนหนึ่ง/เล็กน้อย)"
+        },
+        {
+          "structure": "S + V + C",
+          "sentence": "The coffee is a bit hot.",
+          "translation": "กาแฟร้อนนิดหน่อย",
+          "grammar": "S (The coffee: กาแฟ) + V (is: เป็น/คือ) + C (a bit hot: ร้อนเล็กน้อย)"
+        },
+        {
+          "structure": "S + V + IO + DO",
+          "sentence": "She gave me a bit of advice.",
+          "translation": "เธอให้คำแนะนำฉันเล็กน้อย",
+          "grammar": "S (She: เธอ) + V (gave: ให้) + IO (me: ฉัน) + DO (a bit of advice: คำแนะนำเล็กน้อย)"
+        },
+        {
+          "structure": "S + V + O + C",
+          "sentence": "He considers the work a bit easy.",
+          "translation": "เขาพิจารณาว่างานนี้ง่ายนิดหน่อย",
+          "grammar": "S (He: เขา) + V (considers: พิจารณาเห็นว่า) + O (the work: งานนี้) + C (a bit easy: ง่ายเล็กน้อย)"
+        }
+      ],
+      "trick": "จำว่า 'A' (หนึ่ง) 'Bit' (ชิ้น/ส่วนเล็กๆ) รวมกันก็คือมีอยู่แค่ชิ้นเล็กๆ นิดเดียวเท่านั้น"
+    }
+  }
+}
