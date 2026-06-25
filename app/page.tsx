@@ -24,49 +24,56 @@ export default function Home() {
   const [loadingAI, setLoadingAI] = useState(false);
   const [apiError, setApiError] = useState<string | null>(null);
 
-  // Load progress and card cache from server database (/api/db) on client mount
+  // Load progress and card cache from localStorage (with server DB as fallback/initial seed)
   useEffect(() => {
-    // Fetch from backend JSON database first
-    fetch("/api/db")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to load backend database");
-        return res.json();
-      })
-      .then((data) => {
-        if (data.progress) {
+    try {
+      const savedProgress = localStorage.getItem("lexiflow_progress");
+      const savedCache = localStorage.getItem("lexiflow_card_cache");
+
+      if (savedProgress || savedCache) {
+        if (savedProgress) {
+          const parsed = JSON.parse(savedProgress);
           setProgress({
-            masteredIds: data.progress.masteredIds || [],
-            starredIds: data.progress.starredIds || [],
-            notes: data.progress.notes || {},
+            masteredIds: parsed.masteredIds || [],
+            starredIds: parsed.starredIds || [],
+            notes: parsed.notes || {},
           });
         }
-        if (data.cardCache) {
-          setCardCache(data.cardCache);
+        if (savedCache) {
+          setCardCache(JSON.parse(savedCache));
         }
-      })
-      .catch((err) => {
-        console.warn("Failed to load from server DB, falling back to localStorage", err);
-        try {
-          const savedProgress = localStorage.getItem("lexiflow_progress");
-          if (savedProgress) {
-            const parsed = JSON.parse(savedProgress);
-            setProgress({
-              masteredIds: parsed.masteredIds || [],
-              starredIds: parsed.starredIds || [],
-              notes: parsed.notes || {},
-            });
-          }
-          const savedCache = localStorage.getItem("lexiflow_card_cache");
-          if (savedCache) {
-            setCardCache(JSON.parse(savedCache));
-          }
-        } catch (e) {
-          console.error("Failed to load state from localStorage fallback", e);
-        }
-      });
+      } else {
+        // First-time load: Seed initial database from server-side db.json
+        fetch("/api/db")
+          .then((res) => {
+            if (!res.ok) throw new Error("Failed to load initial backend database");
+            return res.json();
+          })
+          .then((data) => {
+            if (data.progress) {
+              const initialProgress = {
+                masteredIds: data.progress.masteredIds || [],
+                starredIds: data.progress.starredIds || [],
+                notes: data.progress.notes || {},
+              };
+              setProgress(initialProgress);
+              localStorage.setItem("lexiflow_progress", JSON.stringify(initialProgress));
+            }
+            if (data.cardCache) {
+              setCardCache(data.cardCache);
+              localStorage.setItem("lexiflow_card_cache", JSON.stringify(data.cardCache));
+            }
+          })
+          .catch((err) => {
+            console.warn("Failed to fetch initial seed data from server DB", err);
+          });
+      }
+    } catch (e) {
+      console.error("Failed to load initial state", e);
+    }
   }, []);
 
-  // Save progress and sync to server DB and localStorage
+  // Save progress to localStorage (pure client side)
   const saveProgress = (newProgress: UserProgress) => {
     setProgress(newProgress);
     try {
@@ -74,15 +81,9 @@ export default function Home() {
     } catch (e) {
       console.error("Failed to save progress to localStorage", e);
     }
-    // Sync to backend file db
-    fetch("/api/db", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ progress: newProgress })
-    }).catch((err) => console.warn("Failed to sync progress to server DB", err));
   };
 
-  // Save card cache and sync to server DB and localStorage
+  // Save card cache to localStorage (pure client side)
   const saveCardCache = (newCache: Record<string, CardData>) => {
     setCardCache(newCache);
     try {
@@ -90,12 +91,6 @@ export default function Home() {
     } catch (e) {
       console.error("Failed to save card cache to localStorage", e);
     }
-    // Sync to backend file db
-    fetch("/api/db", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ cardCache: newCache })
-    }).catch((err) => console.warn("Failed to sync card cache to server DB", err));
   };
 
   // Helper toggle functions
