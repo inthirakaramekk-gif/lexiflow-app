@@ -71,21 +71,6 @@ export default function Home() {
       });
   }, []);
 
-  // Save progress to localStorage and server DB
-  const saveProgress = async (newProgress: UserProgress) => {
-    setProgress(newProgress);
-    try {
-      localStorage.setItem("lexiflow_progress", JSON.stringify(newProgress));
-      await fetch("/api/db", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ progress: newProgress })
-      });
-    } catch (e) {
-      console.error("Failed to save progress to server DB", e);
-    }
-  };
-
   // Save card cache to localStorage and server DB
   const addCardToCache = (wordId: string, cardData: CardData) => {
     setCardCache((prevCache) => {
@@ -102,26 +87,47 @@ export default function Home() {
     });
   };
 
+  const updateProgress = (updater: (prev: UserProgress) => UserProgress) => {
+    setProgress((prevProgress) => {
+      const updatedProgress = updater(prevProgress);
+      localStorage.setItem("lexiflow_progress", JSON.stringify(updatedProgress));
+      fetch("/api/db", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ progress: updatedProgress })
+      }).catch((e) => {
+        console.error("Failed to save progress to server DB", e);
+      });
+      return updatedProgress;
+    });
+  };
+
   // Helper toggle functions
   const toggleMastered = (id: string) => {
-    const isMastered = progress.masteredIds.includes(id);
-    const newMastered = isMastered
-      ? progress.masteredIds.filter((mid) => mid !== id)
-      : [...progress.masteredIds, id];
-    saveProgress({ ...progress, masteredIds: newMastered });
+    updateProgress((prev) => {
+      const isMastered = prev.masteredIds.includes(id);
+      const newMastered = isMastered
+        ? prev.masteredIds.filter((mid) => mid !== id)
+        : [...prev.masteredIds, id];
+      return { ...prev, masteredIds: newMastered };
+    });
   };
 
   const toggleStarred = (id: string) => {
-    const isStarred = progress.starredIds.includes(id);
-    const newStarred = isStarred
-      ? progress.starredIds.filter((sid) => sid !== id)
-      : [...progress.starredIds, id];
-    saveProgress({ ...progress, starredIds: newStarred });
+    updateProgress((prev) => {
+      const isStarred = prev.starredIds.includes(id);
+      const newStarred = isStarred
+        ? prev.starredIds.filter((sid) => sid !== id)
+        : [...prev.starredIds, id];
+      return { ...prev, starredIds: newStarred };
+    });
   };
 
   const saveNote = (id: string, note: string) => {
-    const newNotes = { ...progress.notes, [id]: note };
-    saveProgress({ ...progress, notes: newNotes });
+    updateProgress((prev) => {
+      const newNotes = { ...prev.notes, [id]: note };
+      return { ...prev, notes: newNotes };
+    });
   };
 
   // Get total unique parts of speech
@@ -215,12 +221,16 @@ export default function Home() {
   }, [flashcardWords, lastWordIdToRestore]);
 
   // Reset card index if deck or search changes (only when not restoring)
+  const isInitialMount = useRef(true);
   useEffect(() => {
-    if (lastWordIdToRestore) return;
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     setCurrentCardIndex(0);
     setIsFlipped(false);
     setActiveCardData(null);
-  }, [flashcardDeckType, flashcardSearchQuery, lastWordIdToRestore]);
+  }, [flashcardDeckType, flashcardSearchQuery]);
 
   // Fetch or generate sentence structures when current card changes
   useEffect(() => {
