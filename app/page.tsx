@@ -992,19 +992,26 @@ export default function Home() {
                             <div className="flex flex-col gap-1.5 xs:gap-2 max-w-2xl mx-auto w-full text-left">
                               {activeCardData.sentences.map((s, idx) => (
                                 <div key={idx} className="bg-[#f8faff] border border-slate-100 rounded-xl p-2.5 flex flex-col gap-1.5 hover:border-[#ffdbe3] transition">
-                                  <div className="flex items-center justify-between gap-2 text-[10px] sm:text-xs">
-                                    <div className="flex items-center gap-2 text-left">
-                                      <span className="font-extrabold bg-emerald-50 text-emerald-600 border border-emerald-100 px-1.5 py-0.5 rounded text-[8.5px] xs:text-[9.5px] shrink-0">
+                                  <div className="flex items-start justify-between gap-2 text-[10px] sm:text-xs">
+                                    <div className="flex items-start gap-2.5 text-left flex-1">
+                                      <span className="font-extrabold bg-[#e6f4ff] text-[#0958d9] border border-[#d2e9ff] px-1.5 py-0.5 rounded text-[8.5px] xs:text-[9.5px] shrink-0 mt-0.5 min-w-[48px] sm:min-w-[55px] text-center">
                                         {s.structure}
                                       </span>
-                                      <span className="text-slate-700 font-semibold text-[11px] xs:text-xs">{s.sentence}</span>
+                                      <div className="flex-1">
+                                        <p className="text-slate-700 font-semibold text-[11px] xs:text-xs leading-snug">{s.sentence}</p>
+                                        {s.thaiPronunciation && (
+                                          <p className="text-[9px] sm:text-[10px] text-[#fa6a8d]/80 font-semibold tracking-wide mt-0.5">
+                                            อ่าน: {s.thaiPronunciation}
+                                          </p>
+                                        )}
+                                      </div>
                                     </div>
                                     <button
                                       onClick={(e) => {
                                         e.stopPropagation();
                                         speakWord(s.sentence);
                                       }}
-                                      className="bg-white hover:bg-slate-50 p-1 rounded-lg text-slate-400 hover:text-emerald-600 border border-slate-200 transition shrink-0"
+                                      className="bg-white hover:bg-slate-50 p-1.5 rounded-lg text-slate-400 hover:text-sky-600 border border-slate-200 transition shrink-0"
                                       title="Listen"
                                     >
                                       <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
@@ -1016,11 +1023,6 @@ export default function Home() {
                                     <p className="text-[11px] xs:text-xs sm:text-sm font-bold text-[#fa6a8d]">
                                       แปล: {s.translation}
                                     </p>
-                                    {s.thaiPronunciation && (
-                                      <p className="text-[10px] sm:text-[11px] font-semibold text-slate-450">
-                                        คำอ่าน: {s.thaiPronunciation}
-                                      </p>
-                                    )}
                                     <p className="text-[9.5px] sm:text-[11px] text-slate-500 font-semibold leading-normal font-sans">
                                       โครงสร้าง: {s.grammar}
                                     </p>
