@@ -87,18 +87,19 @@ export default function Home() {
   };
 
   // Save card cache to localStorage and server DB
-  const saveCardCache = async (newCache: Record<string, CardData>) => {
-    setCardCache(newCache);
-    try {
-      localStorage.setItem("lexiflow_card_cache", JSON.stringify(newCache));
-      await fetch("/api/db", {
+  const addCardToCache = (wordId: string, cardData: CardData) => {
+    setCardCache((prevCache) => {
+      const updatedCache = { ...prevCache, [wordId]: cardData };
+      localStorage.setItem("lexiflow_card_cache", JSON.stringify(updatedCache));
+      fetch("/api/db", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ cardCache: newCache })
+        body: JSON.stringify({ cardCache: updatedCache })
+      }).catch((e) => {
+        console.error("Failed to save card cache to server DB", e);
       });
-    } catch (e) {
-      console.error("Failed to save card cache to server DB", e);
-    }
+      return updatedCache;
+    });
   };
 
   // Helper toggle functions
@@ -257,9 +258,7 @@ export default function Home() {
         return data as CardData;
       })
       .then((data) => {
-        // Save to cache database
-        const newCache = { ...cardCache, [currentWordObj.id]: data };
-        saveCardCache(newCache);
+        addCardToCache(currentWordObj.id, data);
         setActiveCardData(data);
       })
       .catch((err) => {
@@ -267,8 +266,7 @@ export default function Home() {
         setApiError(err.message || "Unknown API Error");
         // Fallback generator
         const fallback = generateFallbackCard(currentWordObj);
-        const newCache = { ...cardCache, [currentWordObj.id]: fallback };
-        saveCardCache(newCache);
+        addCardToCache(currentWordObj.id, fallback);
         setActiveCardData(fallback);
       })
       .finally(() => {
@@ -298,9 +296,7 @@ export default function Home() {
         return data as CardData;
       })
       .then((data) => {
-        // Save to cache database
-        const newCache = { ...cardCache, [currentWordObj.id]: data };
-        saveCardCache(newCache);
+        addCardToCache(currentWordObj.id, data);
         setActiveCardData(data);
       })
       .catch((err) => {
