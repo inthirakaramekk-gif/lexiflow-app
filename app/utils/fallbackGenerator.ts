@@ -2,10 +2,12 @@ import { Word } from "../types";
 
 export interface CardData {
   wordTranslation: string; // Thai translation of the vocabulary word itself
+  thaiPronunciation?: string; // Thai phonetic pronunciation / reading of the word itself
   sentences: {
     structure: string;
     sentence: string;
     translation: string;
+    thaiPronunciation?: string; // Thai phonetic pronunciation of the sentence itself
     grammar: string;
   }[];
   trick: string;
@@ -40,10 +42,14 @@ export function generateFallbackCard(wordObj: Word): CardData {
 
   // Mock translation for fallback
   const mockTranslation = `คำแปลของคำว่า "${w}"`;
+  const mockPronunciation = `คำอ่านสำหรับ "${w}"`;
+
+  let cardData: CardData;
 
   if (pos === "v.") {
-    return {
+    cardData = {
       wordTranslation: mockTranslation,
+      thaiPronunciation: mockPronunciation,
       sentences: [
         {
           structure: "S + V",
@@ -79,8 +85,9 @@ export function generateFallbackCard(wordObj: Word): CardData {
       trick: `เมื่อเห็นคำกริยา "${w}" ให้จินตนาการถึงการกระทำและนำไปฝึกแต่งประโยคสั้นๆ เพื่อให้จำได้ง่ายขึ้น`
     };
   } else if (pos === "n.") {
-    return {
+    cardData = {
       wordTranslation: mockTranslation,
+      thaiPronunciation: mockPronunciation,
       sentences: [
         {
           structure: "S + V",
@@ -116,8 +123,9 @@ export function generateFallbackCard(wordObj: Word): CardData {
       trick: `คำนาม "${w}" สามารถจดจำโดยการผูกเข้ากับภาพสิ่งของหรือวาดภาพลงในโน้ตสมอง`
     };
   } else if (pos === "adj.") {
-    return {
+    cardData = {
       wordTranslation: mockTranslation,
+      thaiPronunciation: mockPronunciation,
       sentences: [
         {
           structure: "S + V",
@@ -153,8 +161,9 @@ export function generateFallbackCard(wordObj: Word): CardData {
       trick: `จดจำคำคุณศัพท์ "${w}" โดยจินตนาการถึงความรู้สึกหรือลักษณะภายนอกที่เด่นชัด`
     };
   } else {
-    return {
+    cardData = {
       wordTranslation: mockTranslation,
+      thaiPronunciation: mockPronunciation,
       sentences: [
         {
           structure: "S + V",
@@ -190,4 +199,11 @@ export function generateFallbackCard(wordObj: Word): CardData {
       trick: `คำว่า "${w}" เป็นคำขยาย ให้ลองจับคู่เข้ากับกริยาหรือคุณศัพท์ที่เห็นบ่อยๆ`
     };
   }
+
+  cardData.sentences = cardData.sentences.map(s => ({
+    ...s,
+    thaiPronunciation: `คำอ่านสำหรับ "${s.sentence}"`
+  }));
+
+  return cardData;
 }

@@ -5,41 +5,89 @@
     "notes": {}
   },
   "cardCache": {
-    "w-0": {
-      "wordTranslation": "คำแปลของคำว่า \"a bit\"",
+    "w-9": {
+      "wordTranslation": "ความสามารถ",
+      "thaiPronunciation": "อะ บิล ลิ ที",
       "sentences": [
         {
           "structure": "S + V",
-          "sentence": "The children acted a bit.",
-          "translation": "The children ได้ปฏิบัติอย่าง a bit",
-          "grammar": "S (The children: ประธาน) + V (acted: ปฏิบัติ/แสดงออก) + M (a bit: อย่างa bit)"
+          "sentence": "Her ability grew.",
+          "translation": "ความสามารถของเธอเติบโตขึ้น",
+          "thaiPronunciation": "เฮอร์ อะ บิล ลิ ที กรู",
+          "grammar": "S (Her ability: ความสามารถของเธอ) + V (grew: เติบโตขึ้น)"
         },
         {
           "structure": "S + V + O",
-          "sentence": "We understood the challenge a bit.",
-          "translation": "พวกเราเข้าใจ the challenge อย่าง a bit",
-          "grammar": "S (We: พวกเรา) + V (understood: เข้าใจ) + O (the challenge: the challenge) + M (a bit: อย่างa bit)"
+          "sentence": "He demonstrated great ability.",
+          "translation": "เขาแสดงให้เห็นถึงความสามารถที่ยอดเยี่ยม",
+          "thaiPronunciation": "ฮี เดม ออน สเทรท เอท เกรท อะ บิล ลิ ที",
+          "grammar": "S (He: เขา) + V (demonstrated: แสดงให้เห็น) + O (great ability: ความสามารถที่ยอดเยี่ยม)"
         },
         {
           "structure": "S + V + C",
-          "sentence": "The presentation was a bit clear.",
-          "translation": "การนำเสนอนั้น a bit clear มาก",
-          "grammar": "S (The presentation: การนำเสนอ) + V (was: เป็น/คือ) + C (clear: clear) + M (a bit: อย่างa bit)"
+          "sentence": "Writing is a special ability.",
+          "translation": "การเขียนคือความสามารถพิเศษอย่างหนึ่ง",
+          "thaiPronunciation": "ไร ทิง อิส อะ สเป ชอล อะ บิล ลิ ที",
+          "grammar": "S (Writing: การเขียน) + V (is: คือ) + C (a special ability: ความสามารถพิเศษอย่างหนึ่ง)"
         },
         {
           "structure": "S + V + IO + DO",
-          "sentence": "She gave them a a bit clear answer.",
-          "translation": "เธอตอบคำถามให้พวกเขาเข้าใจกระจ่างแจ้งอย่าง a bit",
-          "grammar": "S (She: เธอ) + V (gave: ให้) + IO (them: พวกเขา) + DO (a a bit clear answer: คำตอบที่ชัดเจนอย่างa bit)"
+          "sentence": "The teacher gave the student ability to succeed.",
+          "translation": "ครูมอบความสามารถในการประสบความสำเร็จให้กับนักเรียน",
+          "thaiPronunciation": "เดอะ ทีช เชอร์ เกฟ เดอะ สตยู เดนท์ อะ บิล ลิ ที ทู ซัค ซีด",
+          "grammar": "S (The teacher: ครู) + V (gave: มอบ) + IO (the student: นักเรียน) + DO (ability to succeed: ความสามารถในการประสบความสำเร็จ)"
         },
         {
           "structure": "S + V + O + C",
-          "sentence": "We consider the task a bit completed.",
-          "translation": "พวกเราถือว่าภารกิจสำเร็จลงแล้วอย่าง a bit",
-          "grammar": "S (We: พวกเรา) + V (consider: ถือว่า) + O (the task: ภารกิจ) + C (completed: เสร็จสิ้น) + M (a bit: อย่างa bit)"
+          "sentence": "The coach considered his ability sufficient.",
+          "translation": "โค้ชพิจารณาแล้วว่าความสามารถของเขาเพียงพอแล้ว",
+          "thaiPronunciation": "เดอะ โคช คอน ซิด เดอร์ด ฮิส อะ บิล ลิ ที ซัฟ ฟิ เชินท",
+          "grammar": "S (The coach: โค้ช) + V (considered: พิจารณาว่า) + O (his ability: ความสามารถของเขา) + C (sufficient: เพียงพอ)"
         }
       ],
-      "trick": "คำว่า \"a bit\" เป็นคำขยาย ให้ลองจับคู่เข้ากับกริยาหรือคุณศัพท์ที่เห็นบ่อยๆ"
+      "trick": "จำว่า 'อะ-บิล-ลิ-ที' คล้ายกับ 'อยากมีบิล (ใบเสร็จ) ให้เก่ง' คือต้องมี 'ความสามารถ' ในการหาเงินมาจ่ายบิล"
+    },
+    "w-0": {
+      "wordTranslation": "เล็กน้อย, นิดหน่อย",
+      "thaiPronunciation": "อะ บิท",
+      "sentences": [
+        {
+          "structure": "S + V",
+          "sentence": "He trembled a bit.",
+          "translation": "เขาสั่นเล็กน้อย",
+          "thaiPronunciation": "ฮี เทร็มเบิลด์ อะ บิท",
+          "grammar": "S (He: เขา) + V (trembled: สั่น) + Adv (a bit: เล็กน้อย)"
+        },
+        {
+          "structure": "S + V + O",
+          "sentence": "I ate a bit.",
+          "translation": "ฉันกินไปนิดหน่อย",
+          "thaiPronunciation": "ไอ เอท อะ บิท",
+          "grammar": "S (I: ฉัน) + V (ate: กิน) + O (a bit: เล็กน้อย)"
+        },
+        {
+          "structure": "S + V + C",
+          "sentence": "The weather is a bit cold.",
+          "translation": "อากาศหนาวนิดหน่อย",
+          "thaiPronunciation": "เดอะ เวเธอร์ อีส อะ บิท โคลด์",
+          "grammar": "S (The weather: อากาศ) + V (is: คือ/เป็น) + C (a bit cold: หนาวเล็กน้อย)"
+        },
+        {
+          "structure": "S + V + IO + DO",
+          "sentence": "She gave me a bit.",
+          "translation": "เธอแบ่งให้ฉันนิดหน่อย",
+          "thaiPronunciation": "ชี เกฟ มี อะ บิท",
+          "grammar": "S (She: เธอ) + V (gave: ให้) + IO (me: ฉัน) + DO (a bit: เล็กน้อย)"
+        },
+        {
+          "structure": "S + V + O + C",
+          "sentence": "He keeps the room a bit tidy.",
+          "translation": "เขาจัดห้องให้เป็นระเบียบขึ้นนิดหน่อย",
+          "thaiPronunciation": "ฮี คีพส์ เดอะ รูม อะ บิท ไทดี",
+          "grammar": "S (He: เขา) + V (keeps: รักษา/ทำให้) + O (the room: ห้อง) + C (a bit tidy: เป็นระเบียบเล็กน้อย)"
+        }
+      ],
+      "trick": "จำว่า 'อะ บิท' (a bit) ให้คิดถึง 'คำบิท' (ก้อนเล็กๆ) เหมือนเราแบ่งขนมเป็น 'บิท' เล็กๆ"
     }
   }
 }

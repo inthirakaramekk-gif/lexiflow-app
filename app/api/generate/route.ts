@@ -20,11 +20,13 @@ Each sentence MUST strictly follow one of the 5 English sentence structures:
 Return the result as a raw JSON object with the following schema:
 {
   "wordTranslation": "Thai translation of the vocabulary word itself (e.g. 'ละทิ้ง' for 'abandon')",
+  "thaiPronunciation": "Thai phonetic pronunciation / reading of the English word itself (e.g. 'อะแบนดัน' for 'abandon', 'อะ บิท' for 'a bit')",
   "sentences": [
     {
       "structure": "S + V",
       "sentence": "Example sentence using the word",
       "translation": "Thai translation of the sentence",
+      "thaiPronunciation": "Thai phonetic pronunciation / reading of this English sentence (e.g. 'เดอะ ชิลเดรน แอคทิด อะ บิท' for 'The children acted a bit')",
       "grammar": "Detailed breakdown matching the specific English words in the sentence to their grammatical parts with Thai translations, formatted exactly like: 'S (SubjectWord: คำแปล) + V (VerbWord: คำแปล) + ...' (e.g. 'S (He: เขา) + V (runs: วิ่ง) + O (the race: การแข่งขัน)')"
     }
   ],
