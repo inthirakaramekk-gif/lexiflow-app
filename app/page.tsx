@@ -827,8 +827,24 @@ export default function Home() {
                 )}
               </div>
 
-              <div className="text-xs font-bold text-slate-500 bg-slate-100 border border-slate-200/60 px-3 py-1.5 rounded-lg shrink-0">
-                {flashcardWords.length === 0 ? "0 of 0" : `${currentCardIndex + 1} of ${flashcardWords.length}`}
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  onClick={() => {
+                    setCurrentCardIndex(0);
+                    setIsFlipped(false);
+                  }}
+                  disabled={currentCardIndex === 0 || flashcardWords.length === 0}
+                  className="text-xs font-bold text-[#fa6a8d] disabled:text-slate-400 bg-[#ffedf1] disabled:bg-slate-50 hover:bg-[#fa6a8d] hover:text-white border border-[#ffdee5] disabled:border-slate-200 px-3 py-1.5 rounded-lg transition flex items-center gap-1 shadow-sm disabled:shadow-none"
+                  title="Reset to first card"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                  </svg>
+                  First Word
+                </button>
+                <div className="text-xs font-bold text-slate-500 bg-slate-100 border border-slate-200/60 px-3 py-1.5 rounded-lg">
+                  {flashcardWords.length === 0 ? "0 of 0" : `${currentCardIndex + 1} of ${flashcardWords.length}`}
+                </div>
               </div>
             </div>
 

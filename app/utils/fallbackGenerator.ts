@@ -13,6 +13,137 @@ export interface CardData {
   trick: string;
 }
 
+const WORD_MAP: Record<string, string> = {
+  // Subjects
+  "the": "เดอะ",
+  "manager": "แมนเนเจอร์",
+  "team": "ทีม",
+  "our": "เอาเวอร์",
+  "teacher": "ทีชเชอร์",
+  "scientist": "ไซเอนทิสท์",
+  "children": "ชิลเดรน",
+  "a": "อะ",
+  "nurse": "เนิร์ส",
+  "students": "สทิวเดนท์ส",
+  "workers": "เวิร์กเกอร์ส",
+  "she": "ชี",
+  "they": "เด",
+  "we": "วี",
+  "he": "ฮี",
+  "dog": "ด็อก",
+  "arrived": "อะไรฟด์",
+  "safely": "เซฟลี",
+
+  // Objects & Nouns
+  "new": "นิว",
+  "policy": "โพลีซี",
+  "project": "โปรเจกต์",
+  "challenge": "แชลเลนจ์",
+  "this": "ดิส",
+  "opportunity": "ออพพอร์ทูนิตี",
+  "message": "เมสเสจ",
+  "old": "โอลด์",
+  "house": "เฮ้าส์",
+  "idea": "ไอเดีย",
+  "design": "ดีไซน์",
+  "their": "แดร์",
+  "work": "เวิร์ก",
+  "item": "ไอเทม",
+  "beautiful": "บิวตี้ฟูล",
+  "clean": "คลีน",
+  "quick": "ควิก",
+  "priority": "ไพรออริที",
+  "top": "ท็อป",
+  "reward": "รีวอร์ด",
+
+  // Adjectives
+  "happy": "แฮปปี้",
+  "difficult": "ดิฟฟิคัลท์",
+  "clear": "เคลียร์",
+  "important": "อิมพอร์แทนท์",
+  "exciting": "อิกไซทิง",
+  "strange": "สเตรนจ์",
+  "necessary": "เนเซสเซอรี",
+  "perfect": "เพอร์เฟกต์",
+  "tired": "ไทเอิร์ด",
+  "successful": "ซัคเซสฟูล",
+  "special": "สเปเชียล",
+  "some": "ซัม",
+  "gifts": "กิฟท์ส",
+
+  // Grammar particles & common verbs
+  "yesterday": "เยสเทอร์เดย์",
+  "tomorrow": "ทูมอร์โรว์",
+  "will": "วิล",
+  "is": "อีส",
+  "are": "อาร์",
+  "was": "วอส",
+  "were": "เวียร์",
+  "to": "ทู",
+  "gave": "เกฟ",
+  "give": "กิฟ",
+  "bought": "บอท",
+  "found": "เฟานด์",
+  "made": "เมด",
+  "feels": "ฟีลส์",
+  "plans": "แพลนส์",
+  "plan": "แพลน",
+  "book": "บุ๊ก",
+  "student": "สทิวเดนท์",
+  "staff": "สตาฟ",
+  "acted": "แอคทิด",
+  "understood": "อันเดอร์สทูด",
+  "presentation": "พรีเซนเทชัน",
+  "answer": "แอนเซอร์",
+  "consider": "คอนซิเดอร์",
+  "task": "ทาสก์",
+  "completed": "คอมพลีทิด",
+  "partners": "พาร์ทเนอร์ส",
+  "apple": "แอปเปิล",
+  "an": "แอน",
+  "cried": "ไครด์",
+  "child": "ชายล์ด",
+  "ate": "เอท",
+  "cake": "เค้ก",
+  "water": "วอเตอร์",
+  "became": "บีเคม",
+  "cold": "โคลด์",
+  "money": "มันนี่",
+  "completely": "คอมพลีทลี",
+};
+
+export function transliterateWord(word: string): string {
+  const lower = word.toLowerCase().replace(/[^a-z]/g, "");
+  if (WORD_MAP[lower]) return WORD_MAP[lower];
+  
+  // Basic letter-by-letter approximation if not found
+  let result = "";
+  const map: Record<string, string> = {
+    a: "แอน", b: "บ", c: "ค", d: "ด", e: "เอ", f: "ฟ", g: "ก", h: "ฮ",
+    i: "อิ", j: "จ", k: "ค", l: "ล", m: "ม", n: "น", o: "อ", p: "พ",
+    q: "คิว", r: "ร", s: "ส", t: "ท", u: "อุ", v: "ว", w: "ว", x: "กส์",
+    y: "ย", z: "ซ"
+  };
+  
+  for (let i = 0; i < lower.length; i++) {
+    const char = lower[i];
+    result += map[char] || "";
+  }
+  return result || word;
+}
+
+export function englishToThaiPhonetic(sentence: string): string {
+  const clean = sentence.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+  const words = clean.split(/\s+/);
+  return words.map(w => {
+    if (w.toLowerCase().endsWith("ed") && w.length > 2) {
+      const base = w.slice(0, -2);
+      return transliterateWord(base) + "ด์";
+    }
+    return transliterateWord(w);
+  }).join(" ");
+}
+
 const SUBJECTS = [
   "The manager", "The team", "Our teacher", "The scientist", "The children",
   "A nurse", "The students", "The workers", "She", "They", "We", "He", "The dog"
@@ -42,7 +173,7 @@ export function generateFallbackCard(wordObj: Word): CardData {
 
   // Mock translation for fallback
   const mockTranslation = `คำแปลของคำว่า "${w}"`;
-  const mockPronunciation = `คำอ่านสำหรับ "${w}"`;
+  const mockPronunciation = transliterateWord(w);
 
   let cardData: CardData;
 
@@ -202,7 +333,7 @@ export function generateFallbackCard(wordObj: Word): CardData {
 
   cardData.sentences = cardData.sentences.map(s => ({
     ...s,
-    thaiPronunciation: `คำอ่านสำหรับ "${s.sentence}"`
+    thaiPronunciation: englishToThaiPhonetic(s.sentence)
   }));
 
   return cardData;
